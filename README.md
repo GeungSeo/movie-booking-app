@@ -31,7 +31,7 @@ npm run dev
 
 ## Docker 실행
 
--Docker를 이용해 전체 애플리케이션을 컨테이너로 실행합니다.  
+- Docker를 이용해 전체 애플리케이션을 컨테이너로 실행합니다.  
 
 ```bash
 docker-compose up --build
