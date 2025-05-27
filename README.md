@@ -21,3 +21,11 @@ https://movie-booking-gobigm3lz-eunseokas-projects.vercel.app/
 ```bash
 npm install
 npm run dev
+
+## Docker
+docker-compose up --build
+
+## 프로젝트 특징
+- Serverless 환경 배포 (Vercel)
+- tmdb 외부 API 연동
+- Docker + Nginx 구성
