@@ -1,0 +1,38 @@
+import { PrismaClient } from '@prisma/client';
+const prisma = new PrismaClient();
+
+model Movie {
+  id        Int       @id @default(autoincrement())
+  title     String
+  genre     String?
+  screenings Screening[]
+}
+
+model Theater {
+  id        Int       @id @default(autoincrement())
+  name      String
+  location  String?
+  screenings Screening[]
+}
+
+model Screening {
+  id              Int       @id @default(autoincrement())
+  movieId         Int
+  theaterId       Int
+  show_date       DateTime
+  show_time       String
+  seats_total     Int
+  seats_available Int
+  movie           Movie     @relation(fields: [movieId], references: [id])
+  theater         Theater   @relation(fields: [theaterId], references: [id])
+  bookings        Booking[]
+}
+
+model Booking {
+  id           Int       @id @default(autoincrement())
+  userId       Int
+  screeningId  Int
+  seat_count   Int
+  reserved_at  DateTime  @default(now())
+  screening    Screening @relation(fields: [screeningId], references: [id])
+}
