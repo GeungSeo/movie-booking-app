@@ -1,7 +1,7 @@
 # 영화 예매 시스템
 
 Vercel + TMDB API + Docker + Nginx 기반의 영화 예매 웹 애플리케이션입니다.  
-배포 주소: 
+배포 주소: https://movie-booking-gobigm3lz-eunseokas-projects.vercel.app/
 
 ---
 
