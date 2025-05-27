@@ -12,7 +12,7 @@ export default function MyBookingsPage() {
 
   return (
     <div className="p-6">
-      <h2 className="text-xl font-bold mb-4">내 예매 내역</h2>
+      <h2 className="text-xl font-bold mb-4">예매 내역</h2>
       {bookings.length === 0 ? (
         <p>예매 내역이 없습니다.</p>
       ) : (

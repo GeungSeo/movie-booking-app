@@ -35,7 +35,7 @@ export default function AdminPage() {
       </form>
 
       <form onSubmit={(e) => handleSubmit(e, 'screenings', screening)} className="space-y-2">
-        <h3 className="font-semibold">상영정보 등록</h3>
+        <h3 className="font-semibold">상영 정보 등록</h3>
         <input className="border p-1" placeholder="영화 제목" onChange={e => setScreening({ ...screening, movie_title: e.target.value })} />
         <input className="border p-1" placeholder="극장 이름" onChange={e => setScreening({ ...screening, theater_name: e.target.value })} />
         <input className="border p-1" type="date" onChange={e => setScreening({ ...screening, show_date: e.target.value })} />

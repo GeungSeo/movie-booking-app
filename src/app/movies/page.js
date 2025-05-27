@@ -1,23 +1,37 @@
 'use client';
+
 import { useEffect, useState } from 'react';
 
 export default function MoviesPage() {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
-    fetch('/api/movies')
-      .then(res => res.json())
-      .then(data => setMovies(data));
+    async function fetchMovies() {
+      try {
+        const res = await fetch(
+          `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&language=ko-KR&page=1`
+        );
+        const data = await res.json();
+        setMovies(data.results || []);
+      } catch (err) {
+        console.error('영화 데이터를 불러오는 데 실패했습니다.', err);
+      }
+    }
+
+    fetchMovies();
   }, []);
 
   return (
-    <div className="p-6">
-      <h2 className="text-xl font-semibold mb-4">영화 목록</h2>
-      <ul className="list-disc ml-6">
-        {movies.map(movie => (
-          <li key={movie.id}>{movie.title} ({movie.genre})</li>
+    <main className="p-8">
+      <h1 className="text-2xl font-bold mb-4">인기 영화 목록</h1>
+      <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+        {movies.map((movie) => (
+          <li key={movie.id} className="border p-4 rounded shadow">
+            <h2 className="text-lg font-semibold mb-2">{movie.title}</h2>
+            <p>{movie.overview}</p>
+          </li>
         ))}
       </ul>
-    </div>
+    </main>
   );
 }
